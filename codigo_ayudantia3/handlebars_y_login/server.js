@@ -40,7 +40,7 @@ app.get('/login', (req, res) => {
 			res.render('ticketera', {'usuario': user});
 		}
 		else{
-			res.render('login', {'fallido': "Usuario o contraseña incorrectos."});
+			res.render('login', {'fallido': "U	suario o contraseña incorrectos."});
 		}
 	}
 	else{
