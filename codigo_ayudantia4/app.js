@@ -16,7 +16,6 @@ app.use(express.json());
 //Para leer desde form HTML
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//Renderiza login.handlebars en la ruta principal
 app.get("/API/", (req, res) => {
 	res.json({
 		message: "Bienvenido a la API del proyecto de desarrollo web!",

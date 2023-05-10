@@ -1,0 +1,19 @@
+body {
+	background-color: #222831;
+}
+
+.navbar-custom {
+	background-color: #393e46;
+}
+
+.nav-link-custom {
+	color: #eeeeee;
+}
+
+.nav-link-custom:hover {
+	color: #00adb5;
+}
+
+.page-title {
+	color: #eeeeee;
+}
