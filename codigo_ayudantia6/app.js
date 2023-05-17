@@ -61,7 +61,11 @@ function verifyToken(req, res, next) {
 	});
 }
 
-// RUTAS Plantillas
+//hay 2 secciones de rutas, las de plantillas y las de API
+//Esto en verdad debería hacerse separado en 2 archivos, pero por simplicidad
+//para explicar lo dejaremos así
+
+//--------------------RUTAS Plantillas-----------------------
 // Ruta para la página de inicio
 app.get("/", verifyToken, (req, res) => {
 	// Renderizar la plantilla 'index'
@@ -80,7 +84,7 @@ app.get("/register", (req, res) => {
 	res.render("register");
 });
 
-//RUTAS API
+//--------------------RUTAS API-----------------------
 // Ruta para manejar el registro de usuarios
 app.post("/API/register", async (req, res) => {
 	// Recuperar la información del usuario desde el cuerpo de la solicitud
@@ -97,11 +101,9 @@ app.post("/API/register", async (req, res) => {
 		!contrasena ||
 		!direccion
 	) {
-		return res
-			.status(400)
-			.render("register", {
-				error: "Por favor, completa todos los campos.",
-			});
+		return res.status(400).render("register", {
+			error: "Por favor, completa todos los campos.",
+		});
 	}
 
 	// Crear un nuevo documento Usuario

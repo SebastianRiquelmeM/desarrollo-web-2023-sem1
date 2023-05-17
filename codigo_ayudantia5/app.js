@@ -44,7 +44,7 @@ app.get("/login", async (req, res) => {
 			contrasena: pass,
 		});
 
-		// Si se encuentra al usuario, renderizar la plantilla 'ticketera'
+		// Si se encuentra al usuario, renderizar la plantilla 'index'
 		if (usuario) {
 			res.render("index", { usuario: user });
 		} else {
