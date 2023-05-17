@@ -1,0 +1,86 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<h1 class="text-center my-5 page-title">Registrarse</h1>
+			{{#if error}}
+				<div class="alert alert-danger" role="alert">
+					{{error}}
+				</div>
+			{{/if}}
+			<form method="POST" action="/API/register">
+				<div class="mb-3">
+					<label for="nombre" class="form-label">Nombre</label>
+					<input
+						type="text"
+						class="form-control"
+						id="nombre"
+						name="nombre"
+						required
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="edad" class="form-label">Edad</label>
+					<input
+						type="number"
+						class="form-control"
+						id="edad"
+						name="edad"
+						required
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="correo" class="form-label">Correo Electrónico</label>
+					<input
+						type="email"
+						class="form-control"
+						id="correo"
+						name="correo"
+						required
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="intereses" class="form-label">Intereses</label>
+					<input
+						type="text"
+						class="form-control"
+						id="intereses"
+						name="intereses"
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="usuario" class="form-label">Usuario</label>
+					<input
+						type="text"
+						class="form-control"
+						id="usuario"
+						name="usuario"
+						required
+					/>
+				</div>
+				<div class="mb-3">
+					<label
+						for="contrasena"
+						class="form-label"
+					>Contraseña</label>
+					<input
+						type="password"
+						class="form-control"
+						id="contrasena"
+						name="contrasena"
+						required
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="direccion" class="form-label">Dirección</label>
+					<input
+						type="text"
+						class="form-control"
+						id="direccion"
+						name="direccion"
+					/>
+				</div>
+				<button type="submit" class="btn btn-primary">Registrar</button>
+			</form>
+		</div>
+	</div>
+</div>
