@@ -1,0 +1,26 @@
+[
+	{
+		"usuario_id": {
+			"$oid": "645b0c390613a3d9a5f2d253"
+		},
+		"saldo": 5000
+	},
+	{
+		"usuario_id": {
+			"$oid": "645b0c390613a3d9a5f2d254"
+		},
+		"saldo": 3000
+	},
+	{
+		"usuario_id": {
+			"$oid": "645b0c390613a3d9a5f2d255"
+		},
+		"saldo": 7000
+	},
+	{
+		"usuario_id": {
+			"$oid": "646473986e8fbd3dc69b64a8"
+		},
+		"saldo": 6000
+	}
+]

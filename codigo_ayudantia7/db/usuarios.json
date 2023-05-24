@@ -1,0 +1,50 @@
+[
+	{
+		"nombre": "Martín Gutiérrez",
+		"edad": 20,
+		"correo": "marting@example.com",
+		"intereses": [
+			"Marvel",
+			"Club de Deportes Lota Schwager",
+			"Inteligencia Artificial"
+		],
+		"usuario": "martin",
+		"contrasena": "marvelia",
+		"direccion": {
+			"calle": "Av. Dr Strange",
+			"ciudad": "Rancagua",
+			"pais": "Rusia"
+		}
+	},
+	{
+		"nombre": "Jonathan Frez",
+		"edad": 19,
+		"correo": "jonathanf@example.com",
+		"intereses": ["Minecraft", "Chat GPT", "Daft Punk"],
+		"usuario": "jonathan",
+		"contrasena": "minecraftchatdaft",
+		"direccion": {
+			"calle": "Calle Ahumada",
+			"ciudad": "Santiago",
+			"pais": "Chile"
+		}
+	},
+	{
+		"nombre": "Sebastián Riquelme",
+		"edad": 23,
+		"correo": "sebastianr@example.com",
+		"intereses": [
+			"Valorant",
+			"Kimetsu no Yaiba",
+			"Shingeki no Kyojin",
+			"Better Call Saul"
+		],
+		"usuario": "sebastian",
+		"contrasena": "valorkimshinbet",
+		"direccion": {
+			"calle": "Calle Merced",
+			"ciudad": "Santiago",
+			"pais": "Chile"
+		}
+	}
+]
