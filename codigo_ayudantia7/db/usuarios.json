@@ -1,50 +1,72 @@
-[
-	{
-		"nombre": "Martín Gutiérrez",
-		"edad": 20,
-		"correo": "marting@example.com",
-		"intereses": [
-			"Marvel",
-			"Club de Deportes Lota Schwager",
-			"Inteligencia Artificial"
-		],
-		"usuario": "martin",
-		"contrasena": "marvelia",
-		"direccion": {
-			"calle": "Av. Dr Strange",
-			"ciudad": "Rancagua",
-			"pais": "Rusia"
-		}
-	},
-	{
-		"nombre": "Jonathan Frez",
-		"edad": 19,
-		"correo": "jonathanf@example.com",
-		"intereses": ["Minecraft", "Chat GPT", "Daft Punk"],
-		"usuario": "jonathan",
-		"contrasena": "minecraftchatdaft",
-		"direccion": {
-			"calle": "Calle Ahumada",
-			"ciudad": "Santiago",
-			"pais": "Chile"
-		}
-	},
-	{
-		"nombre": "Sebastián Riquelme",
-		"edad": 23,
-		"correo": "sebastianr@example.com",
-		"intereses": [
-			"Valorant",
-			"Kimetsu no Yaiba",
-			"Shingeki no Kyojin",
-			"Better Call Saul"
-		],
-		"usuario": "sebastian",
-		"contrasena": "valorkimshinbet",
-		"direccion": {
-			"calle": "Calle Merced",
-			"ciudad": "Santiago",
-			"pais": "Chile"
-		}
-	}
-]
+[{
+  "_id": {
+    "$oid": "645b0c390613a3d9a5f2d253"
+  },
+  "nombre": "Sebastián Riquelme",
+  "edad": 23,
+  "correo": "sebastianr@example.com",
+  "intereses": [
+    "Valorant",
+    "Kimetsu no Yaiba",
+    "Shingeki no Kyojin",
+    "Better Call Saul"
+  ],
+  "usuario": "sebastian",
+  "contrasena": "valorant",
+  "direccion": {
+    "calle": "Calle Merced",
+    "ciudad": "Santiago",
+    "pais": "Chile"
+  }
+},{
+  "_id": {
+    "$oid": "645b0c390613a3d9a5f2d254"
+  },
+  "nombre": "Martín Gutiérrez",
+  "edad": 20,
+  "correo": "marting@example.com",
+  "intereses": [
+    "Marvel",
+    "Club de Deportes Lota Schwager",
+    "Inteligencia Artificial"
+  ],
+  "usuario": "martin",
+  "contrasena": "marvelia",
+  "direccion": {
+    "calle": "Av. Dr Strange",
+    "ciudad": "Rancagua",
+    "pais": "Rusia"
+  }
+},{
+  "_id": {
+    "$oid": "645b0c390613a3d9a5f2d255"
+  },
+  "nombre": "Jonathan Frez",
+  "edad": 19,
+  "correo": "jonathanf@example.com",
+  "intereses": [
+    "Minecraft",
+    "Chat GPT",
+    "Daft Punk"
+  ],
+  "usuario": "jonathan",
+  "contrasena": "minecraftchatdaft",
+  "direccion": {
+    "calle": "Calle Ahumada",
+    "ciudad": "Santiago",
+    "pais": "Chile"
+  }
+},{
+  "_id": {
+    "$oid": "646473986e8fbd3dc69b64a8"
+  },
+  "nombre": "Sebastian",
+  "edad": 23,
+  "correo": "sebastian.riquelme1@mail.udp.cl",
+  "intereses": [
+    "valorant"
+  ],
+  "usuario": "sebastian",
+  "contrasena": "valorant",
+  "__v": 0
+}]
