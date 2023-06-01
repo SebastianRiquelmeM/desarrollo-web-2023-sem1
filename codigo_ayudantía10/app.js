@@ -148,6 +148,11 @@ app.post("/API/login", async (req, res) => {
 	}
 });
 
+app.get("/API/logout", (req, res) => {
+	res.clearCookie("token");
+	res.json({ message: "Logout successful" });
+});
+
 //------------------- Ruta que renderiza HTML -------------------------------
 
 // Ruta para renderizar index.html
