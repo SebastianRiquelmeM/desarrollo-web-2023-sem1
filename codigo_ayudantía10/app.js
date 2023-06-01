@@ -4,6 +4,9 @@ import { dirname } from "path";
 import path from "path";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
+import Usuario from "./models/usuario.js";
 
 dotenv.config();
 
@@ -15,15 +18,13 @@ const __dirname = dirname(__filename);
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cookieParser());
 
-let users = [
-	{ id: 1, name: "Pedro" },
-	{ id: 2, name: "María" },
-	{ id: 3, name: "Juan" },
-	{ id: 4, name: "Camila" },
-	{ id: 5, name: "Diego" },
-	{ id: 6, name: "Valentina" },
-];
+// Conectar a la base de datos MongoDB utilizando la variable de entorno MONGODB_URI
+mongoose.connect(process.env.MONGODB_URI, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
 
 // Ruta de bienvenida
 app.get("API/hola", (req, res) => {
@@ -49,6 +50,23 @@ function verifyToken(req, res, next) {
 		next();
 	});
 }
+
+// Ruta para verificar si el usuario está autenticado
+app.get("/API/authenticated", (req, res) => {
+	console.log("req.cookies: ", req.cookies);
+	const token = req.cookies.token;
+	if (token) {
+		jwt.verify(token, process.env.JWT_SECRET, function (err, decoded) {
+			if (err) {
+				res.json({ authenticated: false });
+			} else {
+				res.json({ authenticated: true });
+			}
+		});
+	} else {
+		res.json({ authenticated: false });
+	}
+});
 
 // Ruta para manejar el registro de usuarios
 app.post("/API/register", async (req, res) => {
@@ -100,21 +118,24 @@ app.post("/API/login", async (req, res) => {
 	let pass = req.body.pass;
 	if (user && pass) {
 		// Buscar un usuario que coincida con el nombre de usuario y la contraseña proporcionados
-		const usuario = users.find((u) => u.name === user);
-
-		if (usuario) {
-			// Si se encuentra un usuario, crear un token JWT
-			const token = jwt.sign({ id: usuario.id }, process.env.JWT_SECRET, {
-				expiresIn: 86400, // expires in 24 hours
-			});
+		const usuario = await Usuario.findOne({ usuario: user });
+		if (usuario && usuario.contrasena === pass) {
+			// Si se encuentra un usuario y la contraseña es correcta, crear un token JWT
+			const token = jwt.sign(
+				{ id: usuario._id },
+				process.env.JWT_SECRET,
+				{
+					expiresIn: 86400, // expires in 24 hours
+				}
+			);
 
 			// Enviar el token en una cookie
 			res.cookie("token", token, { httpOnly: true });
 
 			// Enviar respuesta con el usuario logueado
-			res.status(200).json({ usuario: user });
+			res.status(200).json({ usuario: usuario.usuario });
 		} else {
-			// Si no se encuentra un usuario, enviar un mensaje de error
+			// Si no se encuentra un usuario o la contraseña es incorrecta, enviar un mensaje de error
 			res.status(400).json({
 				error: "Usuario o contraseña incorrectos.",
 			});
