@@ -2,11 +2,13 @@ import express from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import path from "path";
-// Importar jwt
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -96,23 +98,15 @@ app.post("/API/register", async (req, res) => {
 app.post("/API/login", async (req, res) => {
 	let user = req.body.user;
 	let pass = req.body.pass;
-
 	if (user && pass) {
 		// Buscar un usuario que coincida con el nombre de usuario y la contraseña proporcionados
-		const usuario = await Usuario.findOne({
-			usuario: user,
-			contrasena: pass,
-		});
+		const usuario = users.find((u) => u.name === user);
 
 		if (usuario) {
 			// Si se encuentra un usuario, crear un token JWT
-			const token = jwt.sign(
-				{ id: usuario._id },
-				process.env.JWT_SECRET,
-				{
-					expiresIn: 86400, // expires in 24 hours
-				}
-			);
+			const token = jwt.sign({ id: usuario.id }, process.env.JWT_SECRET, {
+				expiresIn: 86400, // expires in 24 hours
+			});
 
 			// Enviar el token en una cookie
 			res.cookie("token", token, { httpOnly: true });
