@@ -1,6 +1,11 @@
 import requests
 import json
 
+def print_section_info(section_name):
+    print("\n\n" + "-" * 50)
+    print(f"Evaluando: {section_name}")
+    print("-" * 50 + "\n")
+
 def print_request_info(method, route, data=None):
     print(f"\nRealizando petición {method} a {route}")
     if data is not None:
@@ -19,12 +24,13 @@ url = input("Por favor, ingresa la URL de la API: ")
 # Inicializa la sesión
 session = requests.Session()
 
-# Ejecuta las pruebas
+# Realiza las pruebas
 
 ## Prueba POST /usuario para "seba"
+print_section_info("POST /usuario para 'seba'")
 data_seba = {
-    "name": "seba",
-    "email": "s@s.com",
+    "name": "sebas",
+    "email": "s4@s.com",
     "password": "123"
 }
 print_request_info("POST", "/usuario", data_seba)
@@ -32,25 +38,40 @@ response = session.post(url + "/usuario", json=data_seba)
 print_result(response, "/usuario")
 
 ## Prueba POST /usuario para "juan"
+print_section_info("POST /usuario para 'juan'")
 data_juan = {
-    "name": "juan",
-    "email": "j@j.com",
+    "name": "juans",
+    "email": "j4@j.com",
     "password": "123"
 }
 print_request_info("POST", "/usuario", data_juan)
 response = session.post(url + "/usuario", json=data_juan)
 print_result(response, "/usuario")
 
+## Prueba POST /usuario para "seba" (registro duplicado)
+print_section_info("POST /usuario para 'seba' (registro duplicado)")
+print_request_info("POST", "/usuario", data_seba)
+response = session.post(url + "/usuario", json=data_seba)
+print_result(response, "/usuario")
+
 ## Prueba POST /ingresar para "seba"
+print_section_info("POST /ingresar para 'seba'")
 data = {
-    "email": "s@s.com",
+    "email": "s4@s.com",
     "password": "123"
 }
 print_request_info("POST", "/ingresar", data)
 response = session.post(url + "/ingresar", json=data)
 print_result(response, "/ingresar")
 
+## Prueba GET /usuario
+print_section_info("GET /usuario")
+print_request_info("GET", "/usuario")
+response = session.get(url + "/usuario")
+print_result(response, "/usuario")
+
 ## Prueba POST /recargar para "seba"
+print_section_info("POST /recargar para 'seba'")
 data = {
     "amount": 1000,
     "credit_card": "1234567890123456"
@@ -60,11 +81,13 @@ response = session.post(url + "/recargar", json=data)
 print_result(response, "/recargar")
 
 ## Prueba GET /movimientos para "seba"
+print_section_info("GET /movimientos para 'seba'")
 print_request_info("GET", "/movimientos")
 response = session.get(url + "/movimientos")
 print_result(response, "/movimientos")
 
 ## Prueba POST /retirar para "seba"
+print_section_info("POST /retirar para 'seba'")
 data = {
     "amount": 500,
     "credit_card": "1234567890123456"
@@ -74,11 +97,33 @@ response = session.post(url + "/retirar", json=data)
 print_result(response, "/retirar")
 
 ## Prueba POST /transferir desde "seba" a "juan"
+print_section_info("POST /transferir desde 'seba' a 'juan'")
 data = {
-    "email": "j@j.com",
+    "email": "j4@j.com",
     "amount": 500,
     "comment": "prueba"
 }
 print_request_info("POST", "/transferir", data)
 response = session.post(url + "/transferir", json=data)
 print_result(response, "/transferir")
+
+## Prueba POST /transferir sin fondos suficientes
+print_section_info("POST /transferir sin fondos suficientes")
+data = {
+    "email": "j4@j.com",
+    "amount": 10000,  # Cantidad superior a los fondos existentes
+    "comment": "prueba"
+}
+print_request_info("POST", "/transferir", data)
+response = session.post(url + "/transferir", json=data)
+print_result(response, "/transferir")
+
+## Prueba POST /retirar sin fondos suficientes
+print_section_info("POST /retirar sin fondos suficientes")
+data = {
+    "amount": 10000,  # Cantidad superior a los fondos existentes
+    "credit_card": "1234567890123456"
+}
+print_request_info("POST", "/retirar", data)
+response = session.post(url + "/retirar", json=data)
+print_result(response, "/retirar")
