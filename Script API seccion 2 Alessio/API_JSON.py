@@ -30,7 +30,7 @@ session = requests.Session()
 print_section_info("POST /usuario para 'seba'")
 data_seba = {
     "name": "sebas",
-    "email": "s4@s.com",
+    "email": "s5@s.com",
     "password": "123"
 }
 print_request_info("POST", "/usuario", data_seba)
@@ -41,7 +41,7 @@ print_result(response, "/usuario")
 print_section_info("POST /usuario para 'juan'")
 data_juan = {
     "name": "juans",
-    "email": "j4@j.com",
+    "email": "j5@j.com",
     "password": "123"
 }
 print_request_info("POST", "/usuario", data_juan)
@@ -57,7 +57,7 @@ print_result(response, "/usuario")
 ## Prueba POST /ingresar para "seba"
 print_section_info("POST /ingresar para 'seba'")
 data = {
-    "email": "s4@s.com",
+    "email": "s5@s.com",
     "password": "123"
 }
 print_request_info("POST", "/ingresar", data)
@@ -99,7 +99,7 @@ print_result(response, "/retirar")
 ## Prueba POST /transferir desde "seba" a "juan"
 print_section_info("POST /transferir desde 'seba' a 'juan'")
 data = {
-    "email": "j4@j.com",
+    "email": "j5@j.com",
     "amount": 500,
     "comment": "prueba"
 }
@@ -110,7 +110,7 @@ print_result(response, "/transferir")
 ## Prueba POST /transferir sin fondos suficientes
 print_section_info("POST /transferir sin fondos suficientes")
 data = {
-    "email": "j4@j.com",
+    "email": "j5@j.com",
     "amount": 10000,  # Cantidad superior a los fondos existentes
     "comment": "prueba"
 }
